@@ -1,10 +1,10 @@
-# 🔒 Network Configuration Compliance Checker
+# Network Configuration Compliance Checker
 
 A Python-based Network Automation Tool that performs automated security compliance audits on Cisco network devices using SSH. The tool connects to multiple devices concurrently, validates configurations against predefined compliance rules, and generates detailed CSV reports.
 
 ---
 
-## 📌 Overview
+## Overview
 
 Network engineers often spend hours manually verifying device configurations to ensure they meet organizational security standards. This process is repetitive, time-consuming, and prone to human error.
 
@@ -20,43 +20,43 @@ This project demonstrates practical Network Automation concepts using Python, Ne
 
 ---
 
-## 🚀 Features
+## Features
 
-### ✅ Automated Compliance Validation
+### Automated Compliance Validation
 
 Checks device configurations against predefined security policies.
 
-### ✅ SSH-Based Device Access
+### SSH-Based Device Access
 
 Uses Netmiko to securely connect to Cisco IOS devices.
 
-### ✅ Concurrent Device Auditing
+### Concurrent Device Auditing
 
 Uses ThreadPoolExecutor to audit multiple devices simultaneously.
 
-### ✅ Dynamic Rule Engine
+### Dynamic Rule Engine
 
 Compliance rules are stored in JSON and can be modified without changing the code.
 
-### ✅ Regex-Based Verification
+### Regex-Based Verification
 
 Flexible pattern matching allows validation of different configuration standards.
 
-### ✅ CSV Report Generation
+### CSV Report Generation
 
 Creates both detailed and summary compliance reports.
 
-### ✅ Error Handling & Retry Logic
+### Error Handling & Retry Logic
 
 Handles authentication failures, timeouts, and unreachable devices gracefully.
 
-### ✅ Mock Testing Environment
+### Mock Testing Environment
 
 Allows testing without requiring physical network devices.
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ```text
 Network Configuration Compliance Checker
@@ -86,7 +86,7 @@ Network Configuration Compliance Checker
 
 ---
 
-## ⚙️ Technologies Used
+## Technologies Used
 
 | Technology         | Purpose                     |
 | ------------------ | --------------------------- |
@@ -101,7 +101,7 @@ Network Configuration Compliance Checker
 
 ---
 
-## 📋 Compliance Checks Implemented
+## Compliance Checks Implemented
 
 The tool currently validates:
 
@@ -127,7 +127,7 @@ Detects insecure default SNMP community strings.
 
 ---
 
-## 🛠 Installation
+## Installation
 
 ### Clone Repository
 
@@ -144,7 +144,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📝 Device Inventory Configuration
+## Device Inventory Configuration
 
 Edit:
 
@@ -162,7 +162,7 @@ R2,cisco_ios,192.168.1.2,admin,password123,22,enable123
 
 ---
 
-## ▶️ Running the Application
+## Running the Application
 
 ```bash
 python main.py
@@ -183,7 +183,7 @@ Compliance Report Generated Successfully
 
 ---
 
-## 📊 Generated Reports
+## Generated Reports
 
 ### Detailed Report
 
@@ -208,7 +208,7 @@ Contains:
 
 ---
 
-## 🧪 Running Unit Tests
+## Running Unit Tests
 
 ```bash
 pytest tests/
@@ -222,7 +222,7 @@ python test_mock.py
 
 ---
 
-## 🎯 Skills Demonstrated
+## Skills Demonstrated
 
 * Network Automation
 * Python Programming
@@ -237,7 +237,7 @@ python test_mock.py
 
 ---
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 * HTML Dashboard Reporting
 * Email Alert Notifications
@@ -248,7 +248,7 @@ python test_mock.py
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Harshibar Mehta
 
@@ -258,6 +258,6 @@ Interested in Network Automation, Network Engineering, and Infrastructure Automa
 
 ---
 
-## 📄 License
+## License
 
 This project is released under the MIT License.
