@@ -250,11 +250,13 @@ python test_mock.py
 
 ## Author
 
-Harshibar Mehta
+Soumya Mehta
 
 Electronics Engineering Student | CCNA Certified
 
 Interested in Network Automation, Network Engineering, and Infrastructure Automation.
+
+GitHub: https://github.com/SMehta13-19
 
 ---
 
