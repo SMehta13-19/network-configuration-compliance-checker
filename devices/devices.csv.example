@@ -1,0 +1,4 @@
+hostname,device_type,ip,username,password,port,secret
+Router-1,cisco_ios,192.168.1.1,admin,CHANGE_ME,22,CHANGE_ME
+Router-2,cisco_ios,192.168.1.2,admin,CHANGE_ME,22,CHANGE_ME
+Switch-1,cisco_ios,192.168.1.10,admin,CHANGE_ME,22,CHANGE_ME

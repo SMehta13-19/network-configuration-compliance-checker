@@ -1,0 +1,50 @@
+{
+  "rules": [
+    {
+      "id": "SEC-001",
+      "name": "SSH Version Check",
+      "description": "Ensure SSH version 2 is enabled",
+      "command": "show ip ssh",
+      "regex_pattern": "SSH Enabled.*version\\s+(\\d+)",
+      "expected_value": "2",
+      "severity": "HIGH"
+    },
+    {
+      "id": "SEC-002",
+      "name": "Password Encryption",
+      "description": "Service password-encryption should be enabled",
+      "command": "show running-config | include service password-encryption",
+      "regex_pattern": "service password-encryption",
+      "expected_value": "present",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "SEC-003",
+      "name": "Login Banner",
+      "description": "Legal banner should be configured",
+      "command": "show running-config | include banner",
+      "regex_pattern": "banner\\s+motd",
+      "expected_value": "present",
+      "severity": "LOW"
+    },
+    {
+      "id": "SEC-004",
+      "name": "Console Timeout",
+      "description": "Console timeout should be set to 10 minutes or less",
+      "command": "show running-config | include exec-timeout",
+      "regex_pattern": "exec-timeout\\s+(\\d+)",
+      "expected_value": "10",
+      "comparison": "less_equal",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "SEC-005",
+      "name": "SNMP Community Strings",
+      "description": "No default public/private community strings",
+      "command": "show running-config | include snmp-server community",
+      "regex_pattern": "snmp-server community\\s+(public|private)",
+      "expected_value": "absent",
+      "severity": "HIGH"
+    }
+  ]
+}
