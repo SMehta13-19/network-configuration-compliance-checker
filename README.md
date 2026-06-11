@@ -1,130 +1,263 @@
-\# Network Configuration Compliance Checker 🔒
+# 🔒 Network Configuration Compliance Checker
 
+A Python-based Network Automation Tool that performs automated security compliance audits on Cisco network devices using SSH. The tool connects to multiple devices concurrently, validates configurations against predefined compliance rules, and generates detailed CSV reports.
 
+---
 
-\[!\[Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+## 📌 Overview
 
-\[!\[Netmiko](https://img.shields.io/badge/Netmiko-4.7+-green.svg)](https://github.com/ktbyers/netmiko)
+Network engineers often spend hours manually verifying device configurations to ensure they meet organizational security standards. This process is repetitive, time-consuming, and prone to human error.
 
-\[!\[License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+The Network Configuration Compliance Checker automates this process by:
 
+* Connecting to Cisco devices using SSH
+* Executing compliance verification commands
+* Validating outputs using Regex-based rules
+* Generating detailed compliance reports
+* Supporting concurrent checks across multiple devices
 
+This project demonstrates practical Network Automation concepts using Python, Netmiko, JSON, Regex, and Multithreading.
 
-A production-ready network automation tool that validates device configurations against security compliance rules. Built for network engineers to automate compliance checking across multiple devices.
+---
 
+## 🚀 Features
 
+### ✅ Automated Compliance Validation
 
-\## 🎯 Problem Solved
+Checks device configurations against predefined security policies.
 
+### ✅ SSH-Based Device Access
 
+Uses Netmiko to securely connect to Cisco IOS devices.
 
-Manual network compliance checking is:
+### ✅ Concurrent Device Auditing
 
-\- ⏱️ \*\*Time-consuming\*\* - 4+ hours for 50 devices
+Uses ThreadPoolExecutor to audit multiple devices simultaneously.
 
-\- ❌ \*\*Error-prone\*\* - Human misses critical misconfigurations
+### ✅ Dynamic Rule Engine
 
-\- 📋 \*\*Inconsistent\*\* - Different engineers apply different standards
+Compliance rules are stored in JSON and can be modified without changing the code.
 
+### ✅ Regex-Based Verification
 
+Flexible pattern matching allows validation of different configuration standards.
 
-\*\*This tool automates the entire process\*\* - 50 devices in under 5 minutes with consistent, accurate results.
+### ✅ CSV Report Generation
 
+Creates both detailed and summary compliance reports.
 
+### ✅ Error Handling & Retry Logic
 
-\## ✨ Features
+Handles authentication failures, timeouts, and unreachable devices gracefully.
 
+### ✅ Mock Testing Environment
 
+Allows testing without requiring physical network devices.
 
-| Feature           | Description                                         |
+---
 
-|-------------------|-----------------------------------------------------|
+## 🏗️ Project Architecture
 
-|\*\*Multi-threaded\*\* | Check 50+ devices concurrently (5-10x faster)       |
+```text
+Network Configuration Compliance Checker
+│
+├── config/
+│   └── rules.json
+│
+├── devices/
+│   ├── devices.csv
+│   └── devices.csv.example
+│
+├── reports/
+│
+├── src/
+│   ├── compliance_checker.py
+│   ├── device_connector.py
+│   └── report_generator.py
+│
+├── tests/
+│   ├── mock_data.py
+│   └── test_compliance_checker.py
+│
+├── main.py
+├── requirements.txt
+└── README.md
+```
 
-|\*\*Dynamic Rules\*\*  | JSON-based rules - update without code changes      |
+---
 
-|\*\*CSV Reports\*\*    | Detailed compliance reports with pass/fail analysis |
+## ⚙️ Technologies Used
 
-|\*\*Regex Patterns\*\* | Flexible configuration validation                   |
+| Technology         | Purpose                     |
+| ------------------ | --------------------------- |
+| Python             | Core Development            |
+| Netmiko            | SSH Connectivity            |
+| Cisco IOS          | Device Platform             |
+| Regex              | Configuration Validation    |
+| JSON               | Compliance Rule Definitions |
+| CSV                | Report Generation           |
+| Pytest             | Unit Testing                |
+| ThreadPoolExecutor | Concurrent Processing       |
 
-|\*\*Mock Testing\*\*   | Test without physical lab devices                   |
+---
 
-|\*\*Error Handling\*\* | Graceful failure handling with retry logic          |
+## 📋 Compliance Checks Implemented
 
+The tool currently validates:
 
+### SSH Version Check
 
-\## 🏗️ System Architecture
+Ensures SSH Version 2 is enabled.
 
+### Password Encryption
 
+Verifies service password encryption is configured.
 
-\### Component Details
+### Login Banner Verification
 
+Checks for security warning banners.
 
+### Console Timeout Validation
 
-| Layer          | Component          | Technology         | Responsibility                             |
+Ensures session timeout policies are enforced.
 
-|----------------|--------------------|--------------------|--------------------------------------------|
+### SNMP Security Check
 
-| \*\*Input\*\*      | Device Inventory   | CSV                | Stores device hostnames, IPs, credentials  |
+Detects insecure default SNMP community strings.
 
-| \*\*Input\*\*      | Rules Engine       | JSON               | Defines compliance rules and expectations  |
+---
 
-| \*\*Processing\*\* | Connection Manager | Netmiko            | Handles SSH connections to network devices |
+## 🛠 Installation
 
-| \*\*Processing\*\* | Thread Pool        | concurrent.futures | Manages concurrent device checks           |
-
-| \*\*Processing\*\* | Regex Engine       | Python `re`        | Pattern matching on device outputs         |
-
-| \*\*Output\*\*     | Report Generator   | CSV module         | Creates detailed compliance reports        |
-
-| \*\*Output\*\*     | Terminal UI        | Print/logging      | Displays real-time progress and summary    |
-
-
-
-
-
-\## 📋 Prerequisites
-
-
-
-\- Python 3.8+
-
-\- Network devices with SSH access
-
-\- Device credentials (read-only recommended)
-
-
-
-\## 🛠️ Installation
-
-
+### Clone Repository
 
 ```bash
+git clone https://github.com/YOUR_USERNAME/network-configuration-compliance-checker.git
+cd network-configuration-compliance-checker
+```
 
-\# Clone repository
+### Install Dependencies
 
-git clone https://github.com/YOUR\_USERNAME/network-compliance-checker.git
-
-cd network-compliance-checker
-
-
-
-\# Install dependencies
-
+```bash
 pip install -r requirements.txt
+```
 
+---
 
+## 📝 Device Inventory Configuration
 
-\# Configure devices (copy example and edit)
+Edit:
 
-cp devices/devices.csv.example devices/devices.csv
+```text
+devices/devices.csv
+```
 
-\# Edit devices.csv with your device information
+Example:
 
+```csv
+hostname,device_type,ip,username,password,port,secret
+R1,cisco_ios,192.168.1.1,admin,password123,22,enable123
+R2,cisco_ios,192.168.1.2,admin,password123,22,enable123
+```
 
+---
 
-\# Run compliance check
+## ▶️ Running the Application
 
+```bash
 python main.py
+```
 
+Example Output:
+
+```text
+✓ Loaded 2 devices
+
+Running compliance checks...
+
+R1: PASS
+R2: FAIL
+
+Compliance Report Generated Successfully
+```
+
+---
+
+## 📊 Generated Reports
+
+### Detailed Report
+
+Contains:
+
+* Device Name
+* Rule ID
+* Rule Status
+* Severity
+* Actual Value
+* Expected Value
+* Validation Message
+
+### Summary Report
+
+Contains:
+
+* Device Name
+* Overall Compliance Status
+* Timestamp
+* Error Details
+
+---
+
+## 🧪 Running Unit Tests
+
+```bash
+pytest tests/
+```
+
+Or run mock testing:
+
+```bash
+python test_mock.py
+```
+
+---
+
+## 🎯 Skills Demonstrated
+
+* Network Automation
+* Python Programming
+* Cisco IOS Operations
+* SSH Automation
+* Multithreading
+* Regex Pattern Matching
+* OOP Design
+* JSON Data Processing
+* CSV Report Generation
+* Software Testing
+
+---
+
+## 📈 Future Enhancements
+
+* HTML Dashboard Reporting
+* Email Alert Notifications
+* YAML-Based Configuration Support
+* REST API Integration
+* Multi-Vendor Device Support (Cisco, Juniper, Arista)
+* Compliance Score Visualization
+
+---
+
+## 👨‍💻 Author
+
+Harshibar Mehta
+
+Electronics Engineering Student | CCNA Certified
+
+Interested in Network Automation, Network Engineering, and Infrastructure Automation.
+
+---
+
+## 📄 License
+
+This project is released under the MIT License.
